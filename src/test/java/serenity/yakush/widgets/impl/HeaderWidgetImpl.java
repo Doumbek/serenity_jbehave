@@ -27,13 +27,7 @@ public class HeaderWidgetImpl extends BaseWidgetImpl implements HeaderWidget {
 	}
 
 	public AccountInfoWidget getAccountInfoWidget() {
-
-		if(!accountInfoWidget.isDisplayed()) {
-			throw new ElementNotVisibleException("Account information popup not visible");
-		}
-
 		return accountInfoWidget;
-
 	}
 
 	public WebElementFacade getAccountLink() {

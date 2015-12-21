@@ -2,16 +2,16 @@ package serenity.yakush.bo;
 
 public class User {
 
-	private String login;
+	private String email;
 	private String password;
 
-	public User(String login, String password){
-		this.login = login;
+	public User(String email, String password){
+		this.email = email;
 		this.password = password;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
 	public String getPassword() {

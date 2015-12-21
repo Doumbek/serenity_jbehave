@@ -14,6 +14,9 @@ public class EmailWidgetImpl extends BaseWidgetImpl implements EmailWidget {
 	@FindBy(xpath = ".//input[@id = 'next']")
 	private WebElementFacade nextButton;
 
+	@FindBy(xpath = ".//span[@id = 'errormsg_0_Email']")
+	private WebElementFacade emailErrorAlert;
+
 	public EmailWidgetImpl(net.serenitybdd.core.pages.PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
 	}
@@ -28,6 +31,10 @@ public class EmailWidgetImpl extends BaseWidgetImpl implements EmailWidget {
 
 	public WebElementFacade getNextButton() {
 		return nextButton;
+	}
+
+	public WebElementFacade getEmailErrorAlert() {
+		return emailErrorAlert;
 	}
 
 }

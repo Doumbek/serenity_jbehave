@@ -15,7 +15,7 @@ public class PasswordWidgetImpl extends BaseWidgetImpl implements PasswordWidget
 	private WebElementFacade loginButton;
 
 	@FindBy(xpath = ".//span[@id = 'errormsg_0_Passwd']")
-	private WebElementFacade errorAlert;
+	private WebElementFacade passwordErrorAlert;
 
 	public PasswordWidgetImpl(net.serenitybdd.core.pages.PageObject page, ElementLocator locator, WebElement webElement, long timeoutInMilliseconds) {
 		super(page, locator, webElement, timeoutInMilliseconds);
@@ -33,8 +33,8 @@ public class PasswordWidgetImpl extends BaseWidgetImpl implements PasswordWidget
 		return loginButton;
 	}
 
-	public WebElementFacade getErrorAlert() {
-		return errorAlert;
+	public WebElementFacade getPasswordErrorAlert() {
+		return passwordErrorAlert;
 	}
 
 }

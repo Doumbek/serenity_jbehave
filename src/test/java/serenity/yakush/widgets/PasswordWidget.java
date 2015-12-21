@@ -11,6 +11,6 @@ public interface PasswordWidget extends BaseWidget {
 
 	WebElementFacade getLoginButton();
 
-	WebElementFacade getErrorAlert();
+	WebElementFacade getPasswordErrorAlert();
 
 }

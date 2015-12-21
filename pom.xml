@@ -94,6 +94,7 @@
                     <argLine>-Xmx512m</argLine>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                        <restart.browser.each.scenario>true</restart.browser.each.scenario>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>

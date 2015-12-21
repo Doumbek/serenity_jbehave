@@ -11,4 +11,6 @@ public interface EmailWidget extends BaseWidget {
 
 	WebElementFacade getNextButton();
 
+	WebElementFacade getEmailErrorAlert();
+
 }

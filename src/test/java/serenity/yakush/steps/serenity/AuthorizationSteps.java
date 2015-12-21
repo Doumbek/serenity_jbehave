@@ -2,6 +2,7 @@ package serenity.yakush.steps.serenity;
 
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 import serenity.yakush.bo.User;
 import serenity.yakush.pages.InboxPage;
@@ -22,8 +23,8 @@ public class AuthorizationSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void inputLogin(String login) {
-		loginPage.getLoginFormWidget().getEmailWidget().getEmailInput().sendKeys(login);
+	public void inputEmail(String email) {
+		loginPage.getLoginFormWidget().getEmailWidget().getEmailInput().sendKeys(email);
 	}
 
 	@Step
@@ -42,46 +43,6 @@ public class AuthorizationSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void checkErrorAlert() {
-		assertTrue(
-				"Alert must be displayed!",
-				loginPage.getLoginFormWidget().getPasswordWidget().getErrorAlert().isDisplayed()
-		);
-	}
-
-	@Step
-	public void login(User user) {
-		loginPage.getLoginFormWidget().getEmailWidget().getEmailInput().sendKeys(user.getLogin());
-		loginPage.getLoginFormWidget().getEmailWidget().getNextButton().click();
-		loginPage.getLoginFormWidget().getPasswordWidget().getPasswordInput().sendKeys(user.getPassword());
-		loginPage.getLoginFormWidget().getPasswordWidget().getLoginButton().click();
-	}
-
-	@Step
-	public void login(String login, String password) {
-		loginPage.getLoginFormWidget().getEmailWidget().getEmailInput().sendKeys(login);
-		loginPage.getLoginFormWidget().getEmailWidget().getNextButton().click();
-		loginPage.getLoginFormWidget().getPasswordWidget().getPasswordInput().sendKeys(password);
-		loginPage.getLoginFormWidget().getPasswordWidget().getLoginButton().click();
-	}
-
-	@Step
-	public void checkLoginForm() {
-		assertTrue(
-				"Login form must be presented after logout!",
-				loginPage.getLoginFormWidget().isDisplayed()
-		);
-	}
-
-	@Step
-	public void checkAccountLink() {
-		assertTrue(
-				"Account link for authorized user must be presented!",
-				inboxPage.getHeaderBlock().getAccountLink().getWrappedElement().isDisplayed()
-		);
-	}
-
-	@Step
 	public void clickAccountLink() {
 		inboxPage.getHeaderBlock().getAccountLink().click();
 	}
@@ -92,9 +53,60 @@ public class AuthorizationSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void logout() {
-		inboxPage.getHeaderBlock().getAccountLink().click();
-		inboxPage.getHeaderBlock().getAccountInfoWidget().getLogoutButton().click();
+	public void checkAccountLinkIsDisplayed() {
+		assertTrue(
+				"Account link for authorized user must be presented!",
+				inboxPage.getHeaderBlock().getAccountLink().isDisplayed()
+		);
 	}
+
+
+	@Step
+	public void checkEmailErrorAlertIsDisplayed() {
+		assertTrue(
+				"Email alert must be displayed!",
+				loginPage.getLoginFormWidget().getEmailWidget().getEmailErrorAlert().isDisplayed()
+		);
+	}
+
+	@Step
+	public void checkPasswordErrorAlertIsDisplayed() {
+		assertTrue(
+				"Password alert must be displayed!",
+				loginPage.getLoginFormWidget().getPasswordWidget().getPasswordErrorAlert().isDisplayed()
+		);
+	}
+
+	@Step
+	public void checkLoginFormIsDisplayed() {
+		assertTrue(
+				"Login form must be presented after logout!",
+				loginPage.getLoginFormWidget().isDisplayed()
+		);
+	}
+
+	@StepGroup
+	public void login(User user) {
+		inputEmail(user.getEmail());
+		clickNextButton();
+		inputPassword(user.getPassword());
+		clickLoginButton();
+	}
+
+	@StepGroup
+	public void login(String email, String password) {
+		inputEmail(email);
+		clickNextButton();
+		inputPassword(password);
+		clickLoginButton();
+	}
+
+
+	@StepGroup
+	public void logout() {
+		clickAccountLink();
+		clickLogoutButton();
+	}
+
 
 }
