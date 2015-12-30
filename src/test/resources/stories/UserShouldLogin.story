@@ -6,7 +6,7 @@ So that I can buy products easier
 Scenario: User login with correct credential
 Meta:
 Given the user on a login page
-When the user try to login with correct email:<email> and password:<password>
+When the user try to login with correct email: <email> and password: <password>
 Then the user is logged in
 Examples:
 |email                         |password     |
@@ -14,7 +14,7 @@ Examples:
 
 Scenario: User login with incorrect login
 Given the user on a login page
-When the user try to login with incorrect email:<email>
+When the user try to login with incorrect email: <email>
 Then email error alert is displayed
 Examples:
 |email                         |
@@ -22,7 +22,7 @@ Examples:
 
 Scenario: User login with incorrect password
 Given the user on a login page
-When the user try to login with correct email:<email> and incorrect password:<password>
+When the user try to login with correct email: <email> and incorrect password: <password>
 Then password error alert is displayed
 Examples:
 |email                         |password       |

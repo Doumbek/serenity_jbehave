@@ -15,25 +15,25 @@ public class UserStepsDefinitions {
 		user.goToLoginPage();
 	}
 
-	@Given("the user with email '$email' and password '$password' is logged in")
+	@Given("the user with email: '$email' and password: '$password' is logged in")
 	public void givenTheUserIsLoggedIn(String email, String password) {
 		user.goToLoginPage();
 		user.login(email, password);
 	}
 
-	@When("the user try to login with correct email:<email> and password:<password>")
-	public void whenUserTryToLoginWithCorrectCredentials(@Named("email") String email, @Named("password") String password) {
+	@When("the user try to login with correct email: $email and password: $password")
+	public void whenUserTryToLoginWithCorrectCredentials(String email, String password) {
 		user.login(email, password);
 	}
 
-	@When("the user try to login with incorrect email:<email>")
-	public void whenUserTryToLoginWithIncorrectEmail(@Named("email") String email) {
+	@When("the user try to login with incorrect email: $email")
+	public void whenUserTryToLoginWithIncorrectEmail(String email) {
 		user.inputEmail(email);
 		user.clickNextButton();
 	}
 
-	@When("the user try to login with correct email:<email> and incorrect password:<password>")
-	public void whenUserTryToLoginWithIncorrectPassword(@Named("email") String email, @Named("password") String password) {
+	@When("the user try to login with correct email: $email and incorrect password: $password")
+	public void whenUserTryToLoginWithIncorrectPassword(String email, String password) {
 		user.login(email, password);
 	}
 
